@@ -24,3 +24,8 @@ On compile dans une étape, on ne copie que le résultat dans l'image finale.
 
 Temps : [+] Building 22.6s (15/15) FINISHED 
 Remarque : diminution conséquante du temps de build grâce au multi-stage
+
+4 - Cache des Layes
+
+Temps : [+] Building 18.9s (17/17) FINISHED 
+Remarque : quelques secondes de gagnées  
