@@ -113,3 +113,28 @@ mon_nginx
 
 C:\Users\rhmha>docker ps -a
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+
+7 - DockerFile
+
+Building Image of Flask app 
+
+C:\Users\rhmha\Documents\Master 2\CI-CD\tp_docker\tp_docker>docker build -t flask_app:1.0 .
+[+] Building 6.9s (9/9) FINISHED              
+
+C:\Users\rhmha\Documents\Master 2\CI-CD\tp_docker\tp_docker>docker images
+IMAGE                                                    ID             DISK USAGE   CONTENT SIZE   EXTRA
+flask_app:1.0                                            777d85292ecd       89.5MB         22.5MB
+nginx:latest                                             165ddde8751e        243MB         66.8MB
+
+Running container
+
+C:\Users\rhmha\Documents\Master 2\CI-CD\tp_docker\tp_docker>docker run -d --name flask_app -p 8080:5000 flask_app:1.2
+61246b60408cff31411c3ba5660ac5dabc1a77fa87b420f7da5b2fcd9c7151de
+
+C:\Users\rhmha\Documents\Master 2\CI-CD\tp_docker\tp_docker>curl localhost:8080
+Hello World!
+![alt text](image-1.png)
+
+8- Docker Compose
+
+![alt text](image-2.png)
