@@ -1,3 +1,5 @@
+Exercice: Manipulation de base des conteneurs
+
 1 - Vérification de la version de Docker
 
 C:\Users\rhmha>docker --version
@@ -9,7 +11,7 @@ C:\Users\rhmha>docker images
 
 IMAGE ID DISK USAGE CONTENT SIZE EXTRA
 
-3 - Pulling image hello-world
+3 - Téléchargement de l'image hello-world
 
 C:\Users\rhmha>docker pull hello-world
 Using default tag: latest
@@ -20,25 +22,25 @@ Digest: sha256:c567b231f65614688711a75f31518a064258a51d442117a3e771a3a8fdba78ef
 Status: Downloaded newer image for hello-world:latest
 docker.io/library/hello-world:latest
 
-4 - Running image
+4 - Exécution de l'image
 
 C:\Users\rhmha>docker run hello-world
 
 Hello from Docker!
 This message shows that your installation appears to be working correctly.
 
-5 - Conteneurs actifs
+5 - Liste des conteneurs actifs
 
 C:\Users\rhmha>docker ps
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 
-6 - Tous les conteneurs
+6 - Liste de tous les conteneurs
 
 C:\Users\rhmha>docker ps -a
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 a0ca4c5672da hello-world "/hello" 2 minutes ago Exited (0) 2 minutes ago jolly_black
 
-7 - Supprimer conteneur
+7 - Supprimer un conteneur
 
 C:\Users\rhmha>docker rm a0ca4c5672da
 a0ca4c5672da
@@ -59,9 +61,11 @@ Deleted: sha256:c567b231f65614688711a75f31518a064258a51d442117a3e771a3a8fdba78ef
 C:\Users\rhmha>docker images
 IMAGE ID DISK USAGE CONTENT SIZE EXTRA
 
-4. Exercice : Création d'un serveur web avec Docker
 
-1 - Pulling NGINX
+
+Exercice : Création d'un serveur web avec Docker
+
+1 - Téléchargement de l'image officielle NGINX
 
 C:\Users\rhmha>docker pull nginx
 Using default tag: latest
@@ -79,22 +83,22 @@ Digest: sha256:165ddde8751e75a1c907d24ef10d9f6deb08b57e0fe56caf67512486aff76d82
 Status: Downloaded newer image for nginx:latest
 docker.io/library/nginx:latest
 
-2 - Running NGINX
+2 - Exécution de NGINX
 
 C:\Users\rhmha>docker run -d -p 8080:80 --name mon_nginx nginx
 977688ad8adfd6b37ab9cb52922a74049d3c0bcaa0b61c4534200403af962b89
 
-3 - Verify active container
+3 - Liste des conteneurs actifs
 
 C:\Users\rhmha>docker ps
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 977688ad8adf nginx "/docker-entrypoint.…" About a minute ago Up About a minute 0.0.0.0:8080->80/tcp, [::]:8080->80/tcp mon_nginx
 
-4 - Default NGINX page
+4 - Page NGINX par défaut
 
 ![alt text](image.png)
 
-5 - Stopping image
+5 - Arrêt du conteneur
 
 C:\Users\rhmha>docker stop mon_nginx
 mon_nginx
@@ -106,7 +110,7 @@ C:\Users\rhmha>docker ps -a
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 977688ad8adf nginx "/docker-entrypoint.…" 3 minutes ago Exited (0) 18 seconds ago mon_nginx
 
-6 - Removing container
+6 - Suppresion du conteneur
 
 C:\Users\rhmha>docker rm mon_nginx
 mon_nginx
@@ -114,9 +118,13 @@ mon_nginx
 C:\Users\rhmha>docker ps -a
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 
-7 - DockerFile
 
-Building Image of Flask app 
+
+
+Exercice : Déploiement d'une application Python Flask
+
+Ajout d'un Dockerfile dans l'app
+Construction de l'image de l'app 
 
 C:\Users\rhmha\Documents\Master 2\CI-CD\tp_docker\tp_docker>docker build -t flask_app:1.0 .
 [+] Building 6.9s (9/9) FINISHED              
@@ -126,15 +134,23 @@ IMAGE                                                    ID             DISK USA
 flask_app:1.0                                            777d85292ecd       89.5MB         22.5MB
 nginx:latest                                             165ddde8751e        243MB         66.8MB
 
-Running container
+Lancement du conteneur
 
 C:\Users\rhmha\Documents\Master 2\CI-CD\tp_docker\tp_docker>docker run -d --name flask_app -p 8080:5000 flask_app:1.2
 61246b60408cff31411c3ba5660ac5dabc1a77fa87b420f7da5b2fcd9c7151de
+
+Test de l'app sur le navigateur
 
 C:\Users\rhmha\Documents\Master 2\CI-CD\tp_docker\tp_docker>curl localhost:8080
 Hello World!
 ![alt text](image-1.png)
 
-8- Docker Compose
 
+
+
+Exercice : Utilisation de docker compose
+
+Complétion du fichier app.py avec une connexion bdd mongoDB
+Ajout fichier docker compose avec les deux conteneurs
+Lancement du docker compose
 ![alt text](image-2.png)
